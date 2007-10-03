@@ -1,0 +1,4 @@
+Overview of Changes from GLib 2.12.8 to GLib 2.12.9
+===================================================
+
+* AceConn moved to autoconf-based build system.

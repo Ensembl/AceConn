@@ -1,0 +1,72 @@
+#!/bin/bash
+#
+# Noddy script to do two tasks:
+#
+# 1) clean up the directory so that the remaining files are the only ones
+#    that need to go in to CVS
+#
+# 2) run libtoolize, automake etc to prepare the directory for ./configure, make etc.
+#
+# DO NOT DISTRIBUTE WITH FINAL "dist" BUILD OF PACKAGE.
+#
+
+
+# Not all files are cleaned up by "make distclean", none of these need to go in CVS.
+#
+clean_files='aclocal.m4 compile config.guess config.h config.h.in config.log config.status config.sub configure depcomp install-sh libtool ltmain.sh Makefile Makefile.in missing stamp-h1'
+clean_dirs='autom4te.cache .deps .libs'
+
+
+bootstrap=""
+clean=""
+
+while getopts ":bc" opt ; do
+  case $opt in
+    b  ) bootstrap='true' ;;
+    c  ) clean='true' ;;
+    \? ) ZBusage "$cmdstring" "$descstring" "Bad command line flag"
+  esac
+done
+
+# Clean up....
+#
+if [ -n "$clean" ] ; then
+  echo
+  echo "cleaning up `pwd`..."
+
+  make distclean
+
+  for i in doc include src test
+    do
+      rm -f $i/Makefile.in || exit 1
+    done
+
+  rm -f $clean_files || exit 1
+
+  rm -rf $clean_dirs || exit 1
+
+  echo "clean up finished..."
+  echo
+fi
+
+
+# Run the autoconf stuff...
+#
+if [ -n "$bootstrap" ] ; then
+  echo
+  echo "bootstrapping libtoolize, autoconf etc..."
+  libtoolize --copy || exit 1
+
+  aclocal -I /usr/share/aclocal || exit 1
+
+  autoheader || exit 1
+
+  autoconf || exit 1
+
+  automake --add-missing --copy || exit 1
+  echo "bootstrapping finished...now run ./configure"
+  echo
+fi
+
+
+exit 0
