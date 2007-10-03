@@ -25,9 +25,9 @@
  *              of the interface.
  *              
  * HISTORY:
- * Last edited: Nov 12 15:31 2003 (edgrif)
+ * Last edited: Oct  3 15:31 2007 (edgrif)
  * Created: Wed Mar  6 13:58:41 2002 (edgrif)
- * CVS info:   $Id: AceConn.h,v 1.1 2007-10-03 13:28:00 edgrif Exp $
+ * CVS info:   $Id: AceConn.h,v 1.2 2007-10-03 14:39:02 edgrif Exp $
  *-------------------------------------------------------------------
  */
 #ifndef DEF_ACECONN_H
@@ -37,7 +37,7 @@
 
 /* Library version stuff.                                                    */
 #define     ACECONN_VERSION 1
-#define     ACECONN_RELEASE 1
+#define     ACECONN_RELEASE 2
 #define     ACECONN_UPDATE  0
 
 #define ACECONN_CHECK_VERSION(version, release, update)    \
