@@ -1,17 +1,20 @@
-# my local macros....
+#####
+#
+# Local macros for acedb and zmap packages.
+#
+
 
 ##### 
 #
 # SYNOPSIS
 #
-#   AC_COMPILE_CHECK_SIZEOF(TYPE [, HEADERS [, EXTRA_SIZES...]])
+#   AC_STRICT_COMPILE_CHECK_SIZEOF(TYPE, SIZE, [, HEADERS])
 #
 # DESCRIPTION
 #
-#   This macro checks for the size of TYPE using compile checks, not
-#   run checks. You can supply extra HEADERS to look into. the check
-#   will cycle through 1 2 4 8 16 and any EXTRA_SIZES the user
-#   supplies. If a match is found, it will #define SIZEOF_`TYPE' to
+#   This macro verfies that a given type has a given size.
+#   You can supply extra HEADERS to look into.
+#   If a match is found, it will #define SIZEOF_`TYPE' to
 #   that value. Otherwise it will emit a configure time error
 #   indicating the size of the type could not be determined.
 #
@@ -43,24 +46,14 @@
 #        #endif
 #        '
 #
-#        AC_COMPILE_CHECK_SIZEOF(char)
-#        AC_COMPILE_CHECK_SIZEOF(short)
-#        AC_COMPILE_CHECK_SIZEOF(int)
-#        AC_COMPILE_CHECK_SIZEOF(long)
-#        AC_COMPILE_CHECK_SIZEOF(unsigned char *)
-#        AC_COMPILE_CHECK_SIZEOF(void *)
-#        AC_COMPILE_CHECK_SIZEOF(size_t, $headers)
-#        AC_COMPILE_CHECK_SIZEOF(ssize_t, $headers)
-#        AC_COMPILE_CHECK_SIZEOF(ptrdiff_t, $headers)
-#        AC_COMPILE_CHECK_SIZEOF(off_t, $headers)
-#
-# LAST MODIFICATION
-#
-#   2007-07-31
+#        AC_STRICT_COMPILE_CHECK_SIZEOF(char, 1)
+#        AC_STRICT_COMPILE_CHECK_SIZEOF(int, 4)
+#        AC_STRICT_COMPILE_CHECK_SIZEOF(unsigned char *, 8)
+#        AC_STRICT_COMPILE_CHECK_SIZEOF(size_t, 4, $headers)
 #
 # COPYLEFT
 #
-#   Copyright (c) 2007 Kaveh Ghazi <ghazi@caip.rutgers.edu>
+#   Copyright (c) 2007: Genome Research Ltd.
 #
 #   This program is free software: you can redistribute it and/or
 #   modify it under the terms of the GNU General Public License as
@@ -76,20 +69,6 @@
 #   along with this program. If not, see
 #   <http://www.gnu.org/licenses/>.
 #
-#   As a special exception, the respective Autoconf Macro's copyright
-#   owner gives unlimited permission to copy, distribute and modify the
-#   configure scripts that are the output of Autoconf when processing
-#   the Macro. You need not follow the terms of the GNU General Public
-#   License when using or distributing such scripts, even though
-#   portions of the text of the Macro appear in them. The GNU General
-#   Public License (GPL) does govern all other use of the material that
-#   constitutes the Autoconf Macro.
-#
-#   This special exception to the GPL applies to versions of the
-#   Autoconf Macro released by the Autoconf Macro Archive. When you
-#   make and distribute a modified version of the Autoconf Macro, you
-#   may extend this special exception to the GPL to apply to your
-#   modified version as well.
 
 AC_DEFUN([AC_STRICT_COMPILE_CHECK_SIZEOF],
 [changequote(<<, >>)dnl
