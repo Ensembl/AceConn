@@ -3,18 +3,44 @@
 # Noddy script to do two tasks:
 #
 # 1) clean up the directory so that the remaining files are the only ones
-#    that need to go in to CVS
+#    that need to go in to CVS. (Not all files are cleaned up by "make distclean",
+#    this script cleans up all those that don't need to go in CVS.)
 #
 # 2) run libtoolize, automake etc to prepare the directory for ./configure, make etc.
 #
 # DO NOT DISTRIBUTE WITH FINAL "dist" BUILD OF PACKAGE.
 #
+# Customisation:
+#
+# Set the following environment variables _before_ running this script to change
+# it's behaviour:
+#
+# LIBTOOLIZE          set to name of the libtoolize program on your system,
+#                     this is usually 'libtoolize' or 'glibtoolize'
+#
+# AC_LOCAL_INC        Set to the full path for where ac_local should look for
+#                     it's includes, e.g. /usr/local/share/aclocal
+#
 
-
-# Not all files are cleaned up by "make distclean", none of these need to go in CVS.
 #
 clean_files='aclocal.m4 compile config.guess config.h config.h.in config.log config.status config.sub configure depcomp install-sh libtool ltmain.sh Makefile Makefile.in missing stamp-h1'
 clean_dirs='autom4te.cache .deps .libs'
+
+# Set up defaults.
+libtoolize=glibtoolize
+aclocal_includes='/usr/local/share/aclocal'
+
+
+# Override defaults with ENV 
+if [ "x$LIBTOOLIZE" != "x" ]; then 
+    libtoolize=$LIBTOOLIZE
+fi
+
+if [ "x$AC_LOCAL_INC" != "x" ]; then 
+    aclocal_includes=$AC_LOCAL_INC
+fi
+
+
 
 
 bootstrap=""
@@ -55,9 +81,9 @@ fi
 if [ -n "$bootstrap" ] ; then
   echo
   echo "bootstrapping libtoolize, autoconf etc..."
-  libtoolize --copy || exit 1
+  $libtoolize --copy || exit 1
 
-  aclocal -I /usr/share/aclocal || exit 1
+  aclocal -I $aclocal_includes || exit 1
 
   autoheader || exit 1
 
