@@ -13,3 +13,5 @@ noinst_HEADERS = aceconn_.h global.h md5.h
 
 libAceConn_la_LDFLAGS = -version-info 0:0:0
 
+libmd5_la_LDFLAGS = -version-info 0:0:0
+
