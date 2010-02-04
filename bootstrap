@@ -26,9 +26,9 @@
 clean_files='aclocal.m4 compile config.guess config.h config.h.in config.log config.status config.sub configure depcomp install-sh libtool ltmain.sh Makefile Makefile.in missing stamp-h1'
 clean_dirs='autom4te.cache .deps .libs'
 
-# Set up defaults.
-libtoolize=glibtoolize
-aclocal_includes='/usr/local/share/aclocal'
+# Set up defaults (for linux).
+libtoolize=libtoolize
+aclocal_includes='/usr/share/aclocal'
 
 
 # Override defaults with ENV 
