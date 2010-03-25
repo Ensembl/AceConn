@@ -19,7 +19,7 @@
 #                     this is usually 'libtoolize' or 'glibtoolize'
 #
 # AC_LOCAL_INC        Set to the full path for where ac_local should look for
-#                     it's includes, e.g. /usr/local/share/aclocal
+#                     it's includes, e.g. " -I /usr/local/share/aclocal "
 #
 
 #
@@ -28,7 +28,7 @@ clean_dirs='autom4te.cache .deps .libs'
 
 # Set up defaults (for linux).
 libtoolize=libtoolize
-aclocal_includes='/usr/share/aclocal'
+aclocal_includes=' -I /usr/share/aclocal '
 
 
 # Override defaults with ENV 
@@ -83,7 +83,7 @@ if [ -n "$bootstrap" ] ; then
   echo "bootstrapping libtoolize, autoconf etc..."
   $libtoolize --copy || exit 1
 
-  aclocal -I $aclocal_includes || exit 1
+  aclocal $aclocal_includes || exit 1
 
   autoheader || exit 1
 
