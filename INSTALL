@@ -7,8 +7,31 @@ Software Foundation, Inc.
 This file is free documentation; the Free Software Foundation gives
 unlimited permission to copy, distribute and modify it.
 
-Basic Installation
-==================
+
+Bootstrapping the Build
+=======================
+
+The bootstrap script will run the necessary programs to set up
+the autoconf environment and make the configure script. You
+can tell the script where to find libtoolize and the ac_local
+macros if you need to:
+
+> export LIBTOOLIZE=glibtoolize
+
+> export AC_LOCAL_INC=" -I /opt/local/share/aclocal "
+
+> bootstrap -b
+
+> ./configure --prefix=/opt/local
+
+> make
+
+> sudo make install
+
+
+
+Running ./configure
+===================
 
 These are generic installation instructions.
 
