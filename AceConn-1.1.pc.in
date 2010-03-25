@@ -4,7 +4,7 @@ libdir=@libdir@
 includedir=@includedir@
 
 Name: AceConn
-Description: C Acedb socket server connection Library
+Description: Acedb Server Client Library
 Version: @VERSION@
-Libs: -L${libdir} -lAceConn -lmd5
+Libs: -L${libdir} -lAceConn
 Cflags: -I${includedir}
