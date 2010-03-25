@@ -5,7 +5,13 @@ AC_PREREQ(2.59)
 AC_INIT(src/aceconn.c)
 AM_INIT_AUTOMAKE(libAceConn,0.0.1)
 AM_CONFIG_HEADER(config.h)
+
+
+
+dnl Disable shared libs so AceConn will be bound in.
+AC_DISABLE_SHARED
 AM_PROG_LIBTOOL
+
 
 AC_PROG_INSTALL
 
