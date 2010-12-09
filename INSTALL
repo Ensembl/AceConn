@@ -11,23 +11,41 @@ unlimited permission to copy, distribute and modify it.
 Bootstrapping the Build
 =======================
 
-The bootstrap script will run the necessary programs to set up
-the autoconf environment and make the configure script. You
-can tell the script where to find libtoolize and the ac_local
-macros if you need to:
+Use the autoreconf tool to bootstrap the build, this tool
+runs libtool, automake etc in the correct order to produce
+a working build directory with a ./configure script:
+
+
+> autoreconf -i -v
+
+> ./configure
+
+> make
+
+and optionally
+
+> made dist
+
+or perhaps
+
+> sudo make install
+
+
+The -i flag tells autoreconf to add missing standard autoconf
+files, the -v flag gives information messages.
+
+
+You can point autoreconf and tools at different libtoolize,
+aclocal etc:
 
 > export LIBTOOLIZE=glibtoolize
 
 > export AC_LOCAL_INC=" -I /opt/local/share/aclocal "
 
-> bootstrap -b
+
+You can install in non-standard places by:
 
 > ./configure --prefix=/opt/local
-
-> make
-
-> sudo make install
-
 
 
 Running ./configure
