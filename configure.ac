@@ -7,7 +7,7 @@ AC_INIT([AceConn], [1.1.0], [acedb@sanger.ac.uk], [aceconn], [http://www.acedb.o
 AC_CONFIG_SRCDIR([include/AceConn.h])
 AC_CONFIG_HEADERS([config.h])
 
-
+AC_CONFIG_MACRO_DIR([m4])
 
 # acedb server assumes 4 byte ints so client code must as well.
 AC_STRICT_COMPILE_CHECK_SIZEOF(int, 4)
