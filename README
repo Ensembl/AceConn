@@ -21,6 +21,12 @@ Notes about AceConn 1.2.0
 * This most recent version of AceConn now builds/installs using the
   gnu autoconf system.
 
+* If you are installing AceConn from a development copy of the source
+  tree rather than a dist tar file then run the autogen.sh script to
+  create the configure script and then follow the instructions in
+  INSTALL.
+
+
 Future work
 ===========
 
