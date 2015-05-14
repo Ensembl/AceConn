@@ -33,6 +33,11 @@
 #ifndef DEF_ACECONN_H
 #define DEF_ACECONN_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 #include <glib.h>
 
 /* Library version stuff.                                                    */
@@ -115,6 +120,12 @@ char *AceConnGetErrorMsg(AceConnection connection, AceConnStatus err_status) ;
 
 /* Deprecated, use AceConnGetErrorMsg() instead. */
 char *AceConnGetLastErrMsg(AceConnection connection) ;
+
+
+#ifdef __cplusplus
+}
+#endif
+
 
 
 #endif /* !defined DEF_ACECONN_H */

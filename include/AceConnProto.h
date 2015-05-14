@@ -33,6 +33,11 @@
 #define DEF_ACECONNPROTO_H
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 /* I REALLY WANT THIS TO BE USED IN wsocket/ CODE IN THE END SO THAT WE JUST */
 /* ONE HEADER FOR ACEDB SOCKET STUFF....                                     */
 /* But that means that this should ONLY have the bare minimum about the      */
@@ -120,6 +125,12 @@ typedef struct
 
 /* To disconnect the server must sent this text.                             */
 #define ACECONN_CLIENT_GOODBYE "quit"
+
+#ifdef __cplusplus
+}
+#endif
+
+
 
 #endif /* !defined DEF_ACECONNPROTO_H */
 
