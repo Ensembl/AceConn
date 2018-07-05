@@ -1,6 +1,6 @@
 /*  File: AceConn.h
  *  Author: Ed Griffiths (edgrif@sanger.ac.uk)
- *  Copyright (c) 2002-2017: Genome Research Ltd.
+ *  Copyright (c) 2002-2017: Genome Research Ltd. Copyright [2018] EMBL-European Bioinformatics Institute
  *-------------------------------------------------------------------
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
